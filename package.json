@@ -1,0 +1,32 @@
+{
+  "name": "worthie-web",
+  "version": "1.0.0",
+  "description": "Worthie on the Web",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kristiechow/worthie-web.git"
+  },
+  "keywords": [
+    "worthie"
+  ],
+  "author": "Kristie C.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kristiechow/worthie-web/issues"
+  },
+  "homepage": "https://github.com/kristiechow/worthie-web#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cheerio": "^1.0.0-rc.3",
+    "eslint-plugin-react": "^7.18.3",
+    "express": "^4.17.1",
+    "mongoose": "^5.9.1",
+    "objects-to-csv": "^1.3.6",
+    "request": "^2.88.2",
+    "request-promise": "^4.2.5"
+  }
+}
