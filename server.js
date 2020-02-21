@@ -1,29 +1,30 @@
 //server.js
 const http = require('http'),
       url = require('url'),
+      fs = require('fs'),
+      express = require('express');
+      home = fs.readFileSync('home.html'),
+      offsets = fs.readFileSync('offsets.html'),
+      rewards = fs.readFileSync('rewards.html'),
+      bookmarks = fs.readFileSync('bookmarks.html'),
+      app = express(),
+      path = require('path'),
 
-makeServer = function (request,response){
-   let path = url.parse(request.url).pathname;
-   console.log(path);
-   if(path === '/'){
-      response.writeHead(200,{'Content-Type':'text/plain'});
-      response.write('Hello world');
-   }
-   else if(path === '/about'){
-     response.writeHead(200,{'Content-Type':'text/plain'});
-     response.write('About page');
-   }
-   else if(path === '/offsets'){
-     response.writeHead(200,{'Content-Type':'text/plain'});
-     response.write('Blog page');
-   }
-   else{
-     response.writeHead(404,{'Content-Type':'text/plain'});
-     response.write('Error page');
-   }
-   response.end();
- },
-server = http.createServer(makeServer);
-server.listen(3000,()=>{
+app.use(express.static(__dirname + '/public'));
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/home.html'));
+});
+app.get('/offsets', function(req, res) {
+    res.sendFile(path.join(__dirname + '/offsets.html'));
+});
+app.get('/rewards', function(req, res) {
+    res.sendFile(path.join(__dirname + '/rewards.html'));
+});
+app.get('/bookmarks', function(req, res) {
+    res.sendFile(path.join(__dirname + '/bookmarks.html'));
+});
+
+
+app.listen(3000,()=>{
  console.log('Node server created at port 3000');
 });
